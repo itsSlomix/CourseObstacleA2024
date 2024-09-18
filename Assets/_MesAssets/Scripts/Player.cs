@@ -4,14 +4,17 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private float _vitesse = 20f;
+    private Rigidbody _rb;
 
     private void Start()
     {
         // placer le joueur à la position de départ
         transform.position = new Vector3(-42f, 0.5f, -42f);
+
+        _rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         MouvementsJoueur();
     }
@@ -24,7 +27,10 @@ public class Player : MonoBehaviour
         // Normaliser la direction pour ne pas qu'elle dépasse la valeur 1
         direction.Normalize();
 
-        // Déplacer le joueur dans la direction du vecteur
-        transform.Translate(direction * _vitesse * Time.deltaTime);
+        // Applique une force sur le corps physique dans la direction du vecteur
+        //_rb.AddForce(direction * _vitesse * Time.fixedDeltaTime);
+        
+        //Change la vitesse du corps physique dans la direction du vecteur
+        _rb.velocity = direction * _vitesse * Time.fixedDeltaTime;
     }
 }
