@@ -3254,7 +3254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listepieges: []
-  _intensiteForce: 100000
+  _intensiteForce: 3469
 --- !u!1001 &1638656115
 PrefabInstance:
   m_ObjectHideFlags: 0
